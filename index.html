@@ -59,14 +59,16 @@
   .nav-logo-img {
     height: auto;
     width: auto;
-    max-height: 75px;
+    max-height: 55px;
     object-fit: contain;
+    transition: max-height 0.3s;
   }
 
   .nav-links {
     display: flex;
     gap: 2.5rem;
     list-style: none;
+    align-items: center;
   }
 
   .nav-links a {
@@ -81,15 +83,20 @@
   .nav-links a:hover { color: var(--accent); }
 
   .nav-cta {
-    background: var(--accent);
+    background: var(--accent) !important;
     color: #fff !important;
-    padding: 0.55rem 1.3rem;
-    border-radius: 2px;
+    padding: 0.55rem 1.3rem !important;
+    border-radius: 2px !important;
     font-size: 0.78rem !important;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.14em !important;
+    border: none !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: background 0.2s !important;
+    text-transform: uppercase !important;
   }
-
-  .nav-cta:hover { background: #a8421f; color: #fff !important; }
+  .nav-cta:hover { background: #a8421f !important; }
 
   /* HERO */
   .hero {
@@ -110,7 +117,6 @@
       radial-gradient(ellipse at 80% 30%, rgba(184,146,42,0.15) 0%, transparent 50%);
   }
 
-  /* Hero texture */
   .hero-texture {
     position: absolute;
     inset: 0;
@@ -145,18 +151,14 @@
     margin-bottom: 1.4rem;
   }
 
-  .hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(4rem, 12vw, 8.5rem);
-    color: #FAF8F4;
-    line-height: 0.95;
-    letter-spacing: -0.01em;
-    margin-bottom: 0.6rem;
-  }
-
-  .hero-title em {
-    font-style: italic;
-    color: var(--accent-light);
+  /* HERO LOGO — responsive */
+  .hero-logo {
+    display: block;
+    margin: 0 auto 1rem auto;
+    width: clamp(180px, 50vw, 340px);
+    height: auto;
+    max-width: 80%;
+    object-fit: contain;
   }
 
   .hero-sub {
@@ -304,9 +306,7 @@
     color: var(--muted);
   }
 
-  .about-visual {
-    position: relative;
-  }
+  .about-visual { position: relative; }
 
   .about-img-frame {
     width: 100%;
@@ -318,31 +318,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  /* Decorative food illustration placeholder */
-  .food-art {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    background:
-      radial-gradient(ellipse at 40% 40%, rgba(196,80,42,0.08) 0%, transparent 60%),
-      var(--cream);
-  }
-
-  .food-art-circle {
-    width: 180px; height: 180px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(196,80,42,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 5rem;
   }
 
   .about-tag {
@@ -373,10 +348,8 @@
 
   /* MENU */
   .menu-section { background: var(--dark); }
-
   .menu-section .section-label,
   .menu-section .section-title { color: var(--cream); }
-
   .menu-section .section-title em { color: var(--accent-light); }
 
   .menu-intro {
@@ -400,23 +373,17 @@
     padding: 2.5rem 2rem;
     transition: background 0.3s;
     cursor: default;
+    overflow: hidden;
   }
 
   .menu-item:hover { background: #242117; }
 
-  .menu-item-icon {
-    font-size: 1.8rem;
-    margin-bottom: 1.2rem;
-    display: block;
-  }
-
   .menu-item-photo {
-    width: 100%;
+    width: calc(100% + 4rem);
     height: 180px;
     object-fit: cover;
     display: block;
     margin: -2.5rem -2rem 1.5rem -2rem;
-    width: calc(100% + 4rem);
     filter: brightness(0.88) saturate(1.1);
     transition: filter 0.4s ease, transform 0.4s ease;
   }
@@ -425,8 +392,6 @@
     filter: brightness(0.95) saturate(1.2);
     transform: scale(1.02);
   }
-
-  .menu-item { overflow: hidden; }
 
   .menu-item-name {
     font-family: 'Playfair Display', serif;
@@ -472,39 +437,10 @@
     position: relative;
   }
 
-  .review-stars {
-    color: var(--gold);
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    letter-spacing: 0.1em;
-  }
-
-  .review-text {
-    font-size: 0.9rem;
-    color: var(--muted);
-    line-height: 1.8;
-    margin-bottom: 1.2rem;
-    font-style: italic;
-  }
-
-  .review-author {
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--dark);
-    font-weight: 500;
-  }
-
-  .review-quote {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem;
-    color: var(--accent);
-    opacity: 0.08;
-    line-height: 1;
-  }
+  .review-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+  .review-text { font-size: 0.9rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.2rem; font-style: italic; }
+  .review-author { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dark); font-weight: 500; }
+  .review-quote { position: absolute; top: 1.5rem; right: 1.5rem; font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--accent); opacity: 0.08; line-height: 1; }
 
   .rating-highlight {
     display: flex;
@@ -517,139 +453,32 @@
     flex-wrap: wrap;
   }
 
-  .rating-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 5rem;
-    color: var(--cream);
-    line-height: 1;
-  }
-
+  .rating-num { font-family: 'Playfair Display', serif; font-size: 5rem; color: var(--cream); line-height: 1; }
   .rating-info { flex: 1; }
+  .rating-stars-lg { font-size: 1.4rem; color: var(--gold); margin-bottom: 0.4rem; }
+  .rating-count { font-size: 0.8rem; color: rgba(245,240,232,0.4); letter-spacing: 0.06em; }
 
-  .rating-stars-lg {
-    font-size: 1.4rem;
-    color: var(--gold);
-    margin-bottom: 0.4rem;
-  }
-
-  .rating-count {
-    font-size: 0.8rem;
-    color: rgba(245,240,232,0.4);
-    letter-spacing: 0.06em;
-  }
-
-  .rating-platforms {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .platform-row {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    font-size: 0.8rem;
-    color: rgba(245,240,232,0.5);
-  }
-
-  .platform-bar {
-    width: 80px;
-    height: 3px;
-    background: rgba(245,240,232,0.1);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
-  .platform-bar-fill {
-    height: 100%;
-    background: var(--gold);
-    border-radius: 2px;
-  }
+  .rating-platforms { display: flex; flex-direction: column; gap: 0.5rem; }
+  .platform-row { display: flex; align-items: center; gap: 0.8rem; font-size: 0.8rem; color: rgba(245,240,232,0.5); }
+  .platform-bar { width: 80px; height: 3px; background: rgba(245,240,232,0.1); border-radius: 2px; overflow: hidden; }
+  .platform-bar-fill { height: 100%; background: var(--gold); border-radius: 2px; }
 
   /* INFO */
-  .info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: start;
-  }
-
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
   .info-block { margin-bottom: 2.5rem; }
-
-  .info-block-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    color: var(--dark);
-    margin-bottom: 1rem;
-  }
-
-  .info-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 0.7rem 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.88rem;
-  }
-
+  .info-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.7rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
   .info-row-day { color: var(--muted); }
-
   .info-row-time { color: var(--dark); font-weight: 400; }
-
   .info-row-closed { color: rgba(196,80,42,0.6); font-style: italic; }
 
-  .contact-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 1.2rem;
-  }
-
-  .contact-icon {
-    width: 36px; height: 36px;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-    flex-shrink: 0;
-    color: var(--accent);
-  }
-
-  .contact-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.2rem;
-  }
-
-  .contact-value {
-    font-size: 0.92rem;
-    color: var(--dark);
-    text-decoration: none;
-  }
-
+  .contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.2rem; }
+  .contact-icon { width: 36px; height: 36px; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; flex-shrink: 0; color: var(--accent); }
+  .contact-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+  .contact-value { font-size: 0.92rem; color: var(--dark); text-decoration: none; }
   .contact-value:hover { color: var(--accent); }
 
-  .services-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-top: 1.5rem;
-  }
-
-  .service-pill {
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--dark);
-    border: 1px solid var(--border);
-    padding: 0.4rem 0.9rem;
-    border-radius: 20px;
-    background: var(--cream);
-  }
+  .services-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+  .service-pill { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dark); border: 1px solid var(--border); padding: 0.4rem 0.9rem; border-radius: 20px; background: var(--cream); }
 
   /* CTA */
   .cta-section {
@@ -658,17 +487,60 @@
     padding: 6rem 2rem;
   }
 
-  .cta-section .section-title {
-    color: #fff;
-    margin-bottom: 1rem;
-  }
-
+  .cta-section .section-title { color: #fff; margin-bottom: 0.5rem; }
   .cta-section .section-title em { color: rgba(255,255,255,0.6); }
 
   .cta-sub {
     font-size: 0.95rem;
     color: rgba(255,255,255,0.65);
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Número de telèfon estilitzat a la secció CTA */
+  .cta-phone-block {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 0 auto 2.5rem auto;
+    padding: 1rem 2rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 2px;
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(4px);
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .cta-phone-block:hover {
+    background: rgba(255,255,255,0.13);
+    border-color: rgba(255,255,255,0.35);
+  }
+
+  .cta-phone-icon {
+    font-size: 1.1rem;
+    opacity: 0.8;
+  }
+
+  .cta-phone-inner {
+    text-align: left;
+  }
+
+  .cta-phone-label {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 0.15rem;
+  }
+
+  .cta-phone-number {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    color: #fff;
+    letter-spacing: 0.04em;
+    line-height: 1;
   }
 
   .cta-btns {
@@ -689,138 +561,28 @@
     transition: all 0.2s;
     cursor: pointer;
     border: none;
+    font-family: 'DM Sans', sans-serif;
   }
 
-  .btn-light {
-    background: #fff;
-    color: var(--accent);
-  }
+  .btn-light { background: #fff; color: var(--accent); }
   .btn-light:hover { background: var(--cream); }
 
-  .btn-outline-light {
-    background: transparent;
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.4);
-  }
+  .btn-outline-light { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.4); }
   .btn-outline-light:hover { background: rgba(255,255,255,0.1); }
 
   /* FOOTER */
-  footer {
-    background: var(--dark);
-    padding: 3rem 2rem;
-    text-align: center;
-  }
-
-  .footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    color: var(--cream);
-    margin-bottom: 1rem;
-    display: block;
-    text-decoration: none;
-  }
-
-  .footer-sub {
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(245,240,232,0.3);
-    margin-bottom: 2rem;
-  }
-
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    list-style: none;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .footer-links a {
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(245,240,232,0.35);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
+  footer { background: var(--dark); padding: 3rem 2rem; text-align: center; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--cream); margin-bottom: 1rem; display: block; text-decoration: none; }
+  .footer-sub { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,240,232,0.3); margin-bottom: 2rem; }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; list-style: none; margin-bottom: 2rem; flex-wrap: wrap; }
+  .footer-links a { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,240,232,0.35); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--accent-light); }
-
-  .footer-copy {
-    font-size: 0.72rem;
-    color: rgba(245,240,232,0.2);
-  }
-
-  /* Map placeholder */
-  .map-area {
-    width: 100%;
-    height: 260px;
-    background: linear-gradient(135deg, #1a1814, #211f18);
-    border-radius: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: rgba(245,240,232,0.3);
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    border: 1px solid rgba(245,240,232,0.06);
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    text-decoration: none;
-  }
-
-  .map-area::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at 50% 50%, rgba(196,80,42,0.1) 0%, transparent 60%);
-  }
-
-  .map-pin {
-    position: absolute;
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    background: var(--accent);
-    box-shadow: 0 0 0 4px rgba(196,80,42,0.2);
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 4px rgba(196,80,42,0.2); }
-    50% { box-shadow: 0 0 0 10px rgba(196,80,42,0.05); }
-  }
-
-  .map-label {
-    position: relative;
-    z-index: 1;
-    margin-top: 2rem;
-  }
+  .footer-copy { font-size: 0.72rem; color: rgba(245,240,232,0.2); }
 
   /* Divider */
-  .ornament {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin: 2rem 0;
-  }
-
-  .ornament-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  .ornament-symbol {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    color: var(--accent);
-    opacity: 0.5;
-  }
+  .ornament { display: flex; align-items: center; gap: 1rem; margin: 2rem 0; }
+  .ornament-line { flex: 1; height: 1px; background: var(--border); }
+  .ornament-symbol { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--accent); opacity: 0.5; }
 
   /* HAMBURGER */
   .hamburger {
@@ -837,16 +599,7 @@
     z-index: 201;
   }
 
-  .hamburger span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: var(--dark);
-    border-radius: 2px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    transform-origin: center;
-  }
-
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--dark); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; transform-origin: center; }
   .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -866,10 +619,7 @@
     transition: opacity 0.3s ease;
   }
 
-  .mobile-menu.open {
-    display: flex;
-    opacity: 1;
-  }
+  .mobile-menu.open { display: flex; opacity: 1; }
 
   .mobile-menu a {
     font-family: 'Playfair Display', serif;
@@ -884,34 +634,7 @@
 
   .mobile-menu a:hover { color: var(--accent); }
 
-  .mobile-menu .mobile-cta {
-    margin-top: 1.5rem;
-    background: var(--accent);
-    color: #fff !important;
-    padding: 0.85rem 2.5rem;
-    border-radius: 2px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-  /* WhatsApp Reserva Button */
-  .boto-principal {
-    background-color: #25D366 !important; /* Verd WhatsApp */
-    color: white !important;
-    padding: 15px 30px !important;
-    border: none !important;
-    border-radius: 50px !important;
-    font-size: 1.2rem !important;
-    font-weight: bold !important;
-    cursor: pointer !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
-    transition: transform 0.2s !important;
-  }
-  .boto-principal:hover { transform: scale(1.05) !important; }
-
-  /* Modal Reserva */
+  /* Modal */
   .modal-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -920,87 +643,77 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    padding: 1rem;
   }
 
   .modal-content {
     background: white;
     padding: 30px;
-    border-radius: 15px;
+    border-radius: 4px;
     width: 90%;
     max-width: 400px;
     font-family: 'DM Sans', sans-serif;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   }
 
-  .modal-content h3 {
-    margin-bottom: 10px;
-    color: var(--dark);
-  }
+  .modal-content h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.4rem; color: var(--dark); }
+  .modal-content > p { margin-bottom: 1.5rem; color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
 
-  .modal-content p {
-    margin-bottom: 20px;
-    color: var(--muted);
-  }
+  .modal-tancar { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.3rem; cursor: pointer; color: var(--muted); padding: 0.2rem 0.5rem; transition: color 0.2s; }
+  .modal-tancar:hover { color: var(--dark); }
 
-  .camp { 
-    margin-bottom: 15px; 
-    display: flex; 
-    flex-direction: column; 
-  }
-  .camp label { 
-    margin-bottom: 5px; 
-    font-weight: bold; 
-    color: var(--dark);
-  }
-  .camp input { 
-    padding: 10px; 
-    border: 1px solid var(--border); 
-    border-radius: 5px;
+  .camp { margin-bottom: 1.1rem; display: flex; flex-direction: column; }
+  .camp label { margin-bottom: 0.35rem; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dark); }
+  .camp input { padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: 2px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; background: var(--warm-white); color: var(--dark); transition: border-color 0.2s; }
+  .camp input:focus { outline: none; border-color: var(--accent); }
+
+  .botons-grup { display: flex; gap: 0.8rem; margin-top: 1.5rem; }
+  .boto-confirmar { background: #25D366; color: white; border: none; padding: 0.85rem; flex: 2; border-radius: 2px; cursor: pointer; font-weight: 500; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; transition: background 0.2s; }
+  .boto-confirmar:hover { background: #1fb85a; }
+  .boto-secundari { background: var(--cream); border: 1px solid var(--border); padding: 0.85rem; flex: 1; border-radius: 2px; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; color: var(--muted); transition: background 0.2s; }
+  .boto-secundari:hover { background: #ede8df; }
+
+  /* Botó reserva */
+  .btn-reserva {
+    background-color: #25D366;
+    color: white;
+    border: none;
     font-family: 'DM Sans', sans-serif;
-  }
-
-  .botons-grup { 
-    display: flex; 
-    gap: 10px; 
-    margin-top: 20px; 
-  }
-  .boto-confirmar { 
-    background: #25D366; 
-    color: white; 
-    border: none; 
-    padding: 10px; 
-    flex: 2; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    font-weight: bold;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .boto-secundari { 
-    background: var(--cream); 
-    border: 1px solid var(--border); 
-    padding: 10px; 
-    flex: 1; 
-    border-radius: 5px; 
+    font-weight: 500;
     cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s, transform 0.15s;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
   }
+  .btn-reserva:hover { background-color: #1fb85a; }
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
+    nav { padding: 0.8rem 1.2rem; }
     .nav-links { display: none; }
     .hamburger { display: flex; }
+    .nav-logo-img { max-height: 42px; }
+
+    .hero-logo { width: clamp(140px, 55vw, 240px); }
+
     .about-grid, .info-grid { grid-template-columns: 1fr; gap: 3rem; }
     .menu-grid { grid-template-columns: 1fr 1fr; }
     .reviews-grid { grid-template-columns: 1fr; }
     .rating-highlight { gap: 1.5rem; }
     .about-tag { position: static; margin-top: 1rem; display: inline-block; }
+
+    .cta-phone-block { padding: 0.85rem 1.4rem; }
+    .cta-phone-number { font-size: 1.5rem; }
   }
 
   @media (max-width: 480px) {
     section { padding: 4rem 0; }
     .menu-grid { grid-template-columns: 1fr; }
+    .hero-logo { width: clamp(120px, 60vw, 200px); }
+    .cta-phone-block { gap: 0.8rem; padding: 0.75rem 1.1rem; }
   }
-
 </style>
 </head>
 <body>
@@ -1015,7 +728,7 @@
     <li><a href="#menu">La Carta</a></li>
     <li><a href="#opinons">Opinions</a></li>
     <li><a href="#info">Informació</a></li>
-<button class="btn-reserva nav-cta boto-principal">Reservar</button>
+    <li><button class="btn-reserva nav-cta">Reservar</button></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menú">
     <span></span><span></span><span></span>
@@ -1028,8 +741,34 @@
   <a href="#menu" class="mobile-link">La Carta</a>
   <a href="#opinons" class="mobile-link">Opinions</a>
   <a href="#info" class="mobile-link">Informació</a>
-<button class="btn-reserva mobile-cta boto-principal">📞 Reservar</button>
+  <button class="btn-reserva" style="margin-top:1.5rem;padding:0.85rem 2.5rem;font-size:0.85rem;">📞 Reservar</button>
+</div>
 
+<!-- MODAL RESERVA -->
+<div id="modalReserva" class="modal-overlay">
+  <div class="modal-content">
+    <button class="modal-tancar" id="tancarModal" aria-label="Tancar">✕</button>
+    <h3>Reserva la teva taula</h3>
+    <p>Omple les dades i t'enviarem al WhatsApp del restaurant per confirmar.</p>
+    <form id="formDades" novalidate>
+      <div class="camp">
+        <label for="persones">Quants sereu?</label>
+        <input type="number" id="persones" placeholder="Ex: 4" required min="1" max="50">
+      </div>
+      <div class="camp">
+        <label for="dia">Quin dia vindreu?</label>
+        <input type="date" id="dia" required>
+      </div>
+      <div class="camp">
+        <label for="hora">A quina hora?</label>
+        <input type="time" id="hora" required>
+      </div>
+      <div class="botons-grup">
+        <button type="button" id="cancelarModal" class="boto-secundari">Cancel·lar</button>
+        <button type="submit" class="boto-confirmar">💬 Enviar a WhatsApp</button>
+      </div>
+    </form>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -1038,7 +777,7 @@
   <div class="hero-texture"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Restaurant i Cafeteria · Mollerussa, Lleida</p>
-    <img src="images/logo.png" alt="El Vidari - Restaurant i Cafeteria Mollerussa" class="hero-logo" style="max-width: 80%; height: 200px; scale: calc(1.8); margin-bottom: 1rem;">
+    <img src="images/logo.png" alt="El Vidari - Restaurant i Cafeteria Mollerussa" class="hero-logo">
     <p class="hero-sub">Cuina casolana · Mediterràniament</p>
     <div class="hero-badges">
       <span class="badge"><span class="badge-dot"></span> Terrassa interior</span>
@@ -1046,8 +785,8 @@
       <span class="badge"><span class="badge-dot"></span> +3.600 ressenyes</span>
     </div>
     <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-<button class="btn-reserva boto-principal btn">Reservar Taula</button>
-      <a href="#menu" class="btn" style="background:transparent;color:rgba(250,248,244,0.7);border:1px solid rgba(250,248,244,0.2);border-radius:2px;">Veure la carta</a>
+      <button class="btn-reserva btn" style="padding:0.85rem 2rem;font-size:0.8rem;">Reservar Taula</button>
+      <a href="#menu" class="btn" style="background:transparent;color:rgba(250,248,244,0.7);border:1px solid rgba(250,248,244,0.2);">Veure la carta</a>
     </div>
   </div>
   <div class="scroll-hint">
@@ -1072,33 +811,17 @@
           <div class="ornament-line"></div>
         </div>
         <div class="about-stats">
-          <div class="stat-box">
-            <div class="stat-num">4.7</div>
-            <div class="stat-label">★ Google Maps</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-num">9.0</div>
-            <div class="stat-label">Tripadvisor</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-num">+3.6K</div>
-            <div class="stat-label">Ressenyes totals</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-num">98%</div>
-            <div class="stat-label">Recomanen</div>
-          </div>
+          <div class="stat-box"><div class="stat-num">4.7</div><div class="stat-label">★ Google Maps</div></div>
+          <div class="stat-box"><div class="stat-num">9.0</div><div class="stat-label">Tripadvisor</div></div>
+          <div class="stat-box"><div class="stat-num">+3.6K</div><div class="stat-label">Ressenyes totals</div></div>
+          <div class="stat-box"><div class="stat-num">98%</div><div class="stat-label">Recomanen</div></div>
         </div>
       </div>
       <div class="about-visual">
         <div class="about-img-frame">
           <img src="https://www.ozgastroclub.com/wp-content/uploads/sites/616/2024/02/BRAVAS-VERTICAL2-e1706789184245.jpg" alt="Braves de la casa" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:2px;">
-
         </div>
-        <div class="about-tag">
-          <strong>2013</strong>
-          Obertura
-        </div>
+        <div class="about-tag"><strong>2013</strong>Obertura</div>
       </div>
     </div>
   </div>
@@ -1110,10 +833,9 @@
     <p class="section-label">La nostra proposta</p>
     <h2 class="section-title">Els plats<br><em>imprescindibles</em></h2>
     <p class="menu-intro">Una carta que canvia amb les estacions, sempre fidel als productes frescos i l'elaboració casolana. Alguns clàssics no marxen mai.</p>
-
     <div class="menu-grid">
       <div class="menu-item">
-        <img class="menu-item-photo" src="https://images.unsplash.com/photo-1565599837634-134bc3aadce8?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bravas de la Casa" loading="lazy">
+        <img class="menu-item-photo" src="https://images.unsplash.com/photo-1565599837634-134bc3aadce8?q=80&w=735&auto=format&fit=crop" alt="Bravas de la Casa" loading="lazy">
         <div class="menu-item-name">Braves de la Casa</div>
         <div class="menu-item-desc">Patata cuinada a foc lent, amb la nostra salsa rosa casolana de 12 ingredients amb AOVE de Borges Blanques. Ració generosa i inoblidable.</div>
         <span class="menu-item-tag">Clàssic imprescindible</span>
@@ -1176,7 +898,6 @@
   <div class="container">
     <p class="section-label">El que diuen de nosaltres</p>
     <h2 class="section-title">Paraules de<br><em>clients satisfets</em></h2>
-
     <div class="reviews-grid">
       <div class="review-card">
         <div class="review-stars">★★★★★</div>
@@ -1215,7 +936,6 @@
         <div class="review-quote">"</div>
       </div>
     </div>
-
     <div class="rating-highlight">
       <div class="rating-num">4.6</div>
       <div class="rating-info">
@@ -1223,21 +943,9 @@
         <div class="rating-count">Valoració mitjana · Més de 3.600 opinions</div>
       </div>
       <div class="rating-platforms">
-        <div class="platform-row">
-          <span style="min-width:90px">Google Maps</span>
-          <div class="platform-bar"><div class="platform-bar-fill" style="width:94%"></div></div>
-          <span>4.7</span>
-        </div>
-        <div class="platform-row">
-          <span style="min-width:90px">Tripadvisor</span>
-          <div class="platform-bar"><div class="platform-bar-fill" style="width:90%"></div></div>
-          <span>9.0</span>
-        </div>
-        <div class="platform-row">
-          <span style="min-width:90px">Restaurant Guru</span>
-          <div class="platform-bar"><div class="platform-bar-fill" style="width:92%"></div></div>
-          <span>4.6</span>
-        </div>
+        <div class="platform-row"><span style="min-width:90px">Google Maps</span><div class="platform-bar"><div class="platform-bar-fill" style="width:94%"></div></div><span>4.7</span></div>
+        <div class="platform-row"><span style="min-width:90px">Tripadvisor</span><div class="platform-bar"><div class="platform-bar-fill" style="width:90%"></div></div><span>9.0</span></div>
+        <div class="platform-row"><span style="min-width:90px">Restaurant Guru</span><div class="platform-bar"><div class="platform-bar-fill" style="width:92%"></div></div><span>4.6</span></div>
       </div>
     </div>
   </div>
@@ -1250,7 +958,6 @@
       <div>
         <p class="section-label">Com trobar-nos</p>
         <h2 class="section-title">Visita'ns<br>a <em>Mollerussa</em></h2>
-
         <div class="info-block">
           <div class="contact-item">
             <div class="contact-icon">📍</div>
@@ -1275,7 +982,6 @@
             </div>
           </div>
         </div>
-
         <div class="services-row">
           <span class="service-pill">🌳 Terrassa</span>
           <span class="service-pill">🥡 Per emportar</span>
@@ -1286,55 +992,22 @@
           <span class="service-pill">🌱 Vegà</span>
           <span class="service-pill">👥 Grups</span>
         </div>
-
-<div class="map-container" style="margin-top: 2rem; border-radius: 2px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
-  <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d372.78728184547646!2d0.8937996!3d41.6276842!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a6eb2129f9c351%3A0xda81512f3ae97079!2sEl%20Vidari!5e0!3m2!1sca!2ses!4v1773962163652!5m2!1sca!2ses" 
-    width="100%" 
-    height="400" 
-    style="border:0; display: block;" 
-    allowfullscreen="" 
-    loading="lazy" 
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-</div>
+        <div class="map-container" style="margin-top: 2rem; border-radius: 2px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d372.78728184547646!2d0.8937996!3d41.6276842!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a6eb2129f9c351%3A0xda81512f3ae97079!2sEl%20Vidari!5e0!3m2!1sca!2ses!4v1773962163652!5m2!1sca!2ses" width="100%" height="400" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
       </div>
-
       <div>
         <p class="section-label">Quan obrim</p>
         <h2 class="section-title">Horaris<br>d'<em>obertura</em></h2>
-
         <div class="info-block" style="margin-top:2rem;">
-          <div class="info-row">
-            <span class="info-row-day">Dilluns</span>
-            <span class="info-row-closed">Tancat</span>
-          </div>
-          <div class="info-row">
-            <span class="info-row-day">Dimarts</span>
-            <span class="info-row-time">08:30 — 16:00</span>
-          </div>
-          <div class="info-row">
-            <span class="info-row-day">Dimecres</span>
-            <span class="info-row-time">08:30 — 16:00</span>
-          </div>
-          <div class="info-row">
-            <span class="info-row-day">Dijous</span>
-            <span class="info-row-time">08:30 — 16:00</span>
-          </div>
-          <div class="info-row">
-            <span class="info-row-day">Divendres</span>
-            <span class="info-row-time">08:30 — 16:00</span>
-          </div>
-          <div class="info-row">
-            <span class="info-row-day">Dissabte</span>
-            <span class="info-row-time">08:30 — 16:30</span>
-          </div>
-          <div class="info-row">
-            <span class="info-row-day">Diumenge</span>
-            <span class="info-row-closed">Tancat</span>
-          </div>
+          <div class="info-row"><span class="info-row-day">Dilluns</span><span class="info-row-closed">Tancat</span></div>
+          <div class="info-row"><span class="info-row-day">Dimarts</span><span class="info-row-time">08:30 — 16:00</span></div>
+          <div class="info-row"><span class="info-row-day">Dimecres</span><span class="info-row-time">08:30 — 16:00</span></div>
+          <div class="info-row"><span class="info-row-day">Dijous</span><span class="info-row-time">08:30 — 16:00</span></div>
+          <div class="info-row"><span class="info-row-day">Divendres</span><span class="info-row-time">08:30 — 16:00</span></div>
+          <div class="info-row"><span class="info-row-day">Dissabte</span><span class="info-row-time">08:30 — 16:30</span></div>
+          <div class="info-row"><span class="info-row-day">Diumenge</span><span class="info-row-closed">Tancat</span></div>
         </div>
-
         <div style="margin-top:2rem;padding:1.5rem;background:var(--cream);border-radius:2px;border-left:3px solid var(--accent);">
           <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;">
             <strong style="color:var(--dark);font-weight:500;">Recomanem reservar</strong> els caps de setmana, especialment a l'hora de dinar. Contacteu-nos per telèfon o a través d'Instagram per assegurar la vostra taula.
@@ -1351,9 +1024,20 @@
     <p style="font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:1rem;">Vine a tastar-ho</p>
     <h2 class="section-title">Reserva la teva<br><em>taula avui</em></h2>
     <p class="cta-sub">El Vidari t'espera. Truqueu i us guardarem el millor racó.</p>
-    <h2 class="section-title"><em>973 30 22 13</em></h2>
+
+    <!-- Telèfon estilitzat -->
+    <div style="display:flex;justify-content:center;margin-bottom:2.5rem;">
+      <a href="tel:+34973302213" class="cta-phone-block">
+        <span class="cta-phone-icon">📞</span>
+        <span class="cta-phone-inner">
+          <span class="cta-phone-label">Reserva per telèfon</span>
+          <span class="cta-phone-number">973 30 22 13</span>
+        </span>
+      </a>
+    </div>
+
     <div class="cta-btns">
-<button class="btn-reserva boto-principal btn btn-light">Reservar Taula</button>
+      <button class="btn-reserva btn btn-light" style="color:var(--accent);">Reservar Taula</button>
       <a href="https://www.instagram.com/el_vidari/" target="_blank" class="btn btn-outline-light">Instagram @el_vidari</a>
     </div>
   </div>
@@ -1374,122 +1058,80 @@
 </footer>
 
 <script>
-  // Hamburger menu
-  const hamburger = document.getElementById('hamburger');
+document.addEventListener('DOMContentLoaded', function () {
+
+  // ─── MODAL RESERVA ────────────────────────────────────────────
+  const modal    = document.getElementById('modalReserva');
+  const tancar   = document.getElementById('tancarModal');
+  const cancelar = document.getElementById('cancelarModal');
+  const form     = document.getElementById('formDades');
+
+  const TELEFON_WA = '34640264792'; // ← número real del restaurant
+
+  function obrirModal() { modal.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+  function tancarModal() { modal.style.display = 'none'; document.body.style.overflow = ''; }
+
+  document.querySelectorAll('.btn-reserva').forEach(function (btn) {
+    btn.addEventListener('click', obrirModal);
+  });
+
+  tancar.addEventListener('click', tancarModal);
+  cancelar.addEventListener('click', tancarModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) tancarModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') tancarModal(); });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const persones = document.getElementById('persones').value;
+    const dia      = document.getElementById('dia').value;
+    const hora     = document.getElementById('hora').value;
+    const [any, mes, diaNum] = dia.split('-');
+    const diaF = `${diaNum}/${mes}/${any}`;
+    const msg = `Hola! M'agradaria fer una reserva per al dia *${diaF}* a les *${hora}h* per a *${persones} persones*. Em confirmeu disponibilitat? Gràcies!`;
+    window.open(`https://wa.me/${TELEFON_WA}?text=${encodeURIComponent(msg)}`, '_blank');
+    tancarModal();
+    form.reset();
+  });
+
+  // ─── HAMBURGER ────────────────────────────────────────────────
+  const hamburger  = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
 
-  hamburger.addEventListener('click', () => {
+  hamburger.addEventListener('click', function () {
     hamburger.classList.toggle('open');
     mobileMenu.classList.toggle('open');
     document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
   });
 
-// Close mobile menu when clicking links or buttons
-  mobileMenu.querySelectorAll('a, button').forEach(el => {
-    el.addEventListener('click', () => {
+  mobileMenu.querySelectorAll('a, button').forEach(function (el) {
+    el.addEventListener('click', function () {
       hamburger.classList.remove('open');
       mobileMenu.classList.remove('open');
       document.body.style.overflow = '';
     });
   });
 
-  // Smooth reveal on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
+  // ─── SCROLL REVEAL ────────────────────────────────────────────
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.menu-item, .review-card, .stat-box, .info-block').forEach(el => {
+  document.querySelectorAll('.menu-item, .review-card, .stat-box, .info-block').forEach(function (el) {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
   });
 
-  // Nav scroll effect
-  window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 60) {
-      nav.style.padding = '0.8rem 3rem';
-    } else {
-      nav.style.padding = '1.2rem 3rem';
-    }
-  });
-  /* WhatsApp Reserva - Fixed timing issue */
-  document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('modalReserva');
-    const btnTancar = document.getElementById('tancarModal');
-    const form = document.getElementById('formDades');
-
-    // Obrir el popup quan es clica qualsevol boto reserva
-    document.querySelectorAll('.btn-reserva').forEach(btn => {
-      btn.onclick = () => {
-        modal.style.display = 'flex';
-      };
-    });
-
-    // Tancar el popup
-    btnTancar.onclick = () => modal.style.display = 'none';
-
-    // Tancar modal clicant fora
-    modal.onclick = (e) => {
-      if (e.target === modal) modal.style.display = 'none';
-    };
-
-    // Enviar dades al WhatsApp
-    form.onsubmit = (e) => {
-      e.preventDefault();
-      
-      const numPersones = document.getElementById('persones').value;
-      const diaReserva = document.getElementById('dia').value;
-      const horaReserva = document.getElementById('hora').value;
-      const telefon = "34640264792";
-
-      const missatge = `Hola! M'agradaria fer una reserva per al dia *${diaReserva}* a les *${horaReserva}* per a *${numPersones}* persones. Em confirmeu disponibilitat?`;
-      
-      const url = `https://wa.me/${telefon}?text=${encodeURIComponent(missatge)}`;
-      
-      window.open(url, '_blank');
-      modal.style.display = 'none';
-      form.reset();
-    };
+  // ─── NAV SCROLL ───────────────────────────────────────────────
+  window.addEventListener('scroll', function () {
+    document.querySelector('nav').style.padding = window.scrollY > 60 ? '0.6rem 3rem' : '1.2rem 3rem';
   });
 
+});
 </script>
 
-<div id="modalReserva" class="modal-overlay">
-  <div class="modal-content">
-    <h3>Reserva la teva taula</h3>
-    <p>Omple les dades i t'enviarem al WhatsApp del restaurant per confirmar.</p>
-    
-    <form id="formDades">
-      <div class="camp">
-        <label>Quants sereu?</label>
-        <input type="number" id="persones" placeholder="Ex: 4" required min="1">
-      </div>
-      
-      <div class="camp">
-        <label>Quin dia vindreu?</label>
-        <input type="date" id="dia" required>
-      </div>
-      
-      <div class="camp">
-        <label>A quina hora?</label>
-        <input type="time" id="hora" required>
-      </div>
-      
-      <div class="botons-grup">
-        <button type="button" id="tancarModal" class="boto-secundari">Cancel·lar</button>
-        <button type="submit" class="boto-confirmar">Enviar a WhatsApp</button>
-      </div>
-    </form>
-  </div>
-</div>
-
 </body>
-
 </html>

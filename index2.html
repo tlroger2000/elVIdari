@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Vidari — Restaurant i Cafeteria · Mollerussa</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF8F4;
+    --dark: #1C1A14;
+    --text: #2E2B22;
+    --muted: #7A7060;
+    --accent: #C4502A;
+    --accent-light: #E8A07A;
+    --gold: #B8922A;
+    --border: rgba(28,26,20,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(250,248,244,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--dark);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-logo-img {
+    height: auto;
+    width: auto;
+    max-height: 75px;
+    object-fit: contain;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: #fff !important;
+    padding: 0.55rem 1.3rem;
+    border-radius: 2px;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.14em;
+  }
+
+  .nav-cta:hover { background: #a8421f; color: #fff !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--dark);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 60%, rgba(196,80,42,0.22) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 30%, rgba(184,146,42,0.15) 0%, transparent 50%);
+  }
+
+  /* Hero texture */
+  .hero-texture {
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.015) 2px,
+        rgba(255,255,255,0.015) 4px
+      );
+  }
+
+  .hero-content {
+    position: relative;
+    text-align: center;
+    z-index: 2;
+    padding: 0 2rem;
+    animation: fadeUp 1.2s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 1.4rem;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(4rem, 12vw, 8.5rem);
+    color: #FAF8F4;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.6rem;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent-light);
+  }
+
+  .hero-sub {
+    font-size: 0.88rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(250,248,244,0.45);
+    margin-bottom: 3rem;
+  }
+
+  .hero-badges {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    color: rgba(250,248,244,0.6);
+    letter-spacing: 0.06em;
+  }
+
+  .badge-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent-light);
+  }
+
+  .hero-rating {
+    font-size: 1.1rem;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+  }
+
+  .hero-rating span {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    color: #FAF8F4;
+    margin-left: 0.3rem;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(250,248,244,0.35);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    animation: fadeUp 1.8s ease 0.6s both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(250,248,244,0.35), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.15); }
+  }
+
+  /* SECTIONS */
+  section { padding: 7rem 0; }
+
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+    line-height: 1.85;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .stat-box {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: var(--cream);
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    color: var(--dark);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-img-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--cream);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Decorative food illustration placeholder */
+  .food-art {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background:
+      radial-gradient(ellipse at 40% 40%, rgba(196,80,42,0.08) 0%, transparent 60%),
+      var(--cream);
+  }
+
+  .food-art-circle {
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(196,80,42,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+  }
+
+  .about-tag {
+    position: absolute;
+    bottom: -1rem;
+    right: -1.5rem;
+    background: var(--accent);
+    color: #fff;
+    padding: 1.2rem 1.5rem;
+    border-radius: 2px;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .about-tag strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  /* MENU */
+  .menu-section { background: var(--dark); }
+
+  .menu-section .section-label,
+  .menu-section .section-title { color: var(--cream); }
+
+  .menu-section .section-title em { color: var(--accent-light); }
+
+  .menu-intro {
+    font-size: 1rem;
+    color: rgba(245,240,232,0.5);
+    max-width: 520px;
+    margin-bottom: 4rem;
+    line-height: 1.85;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(245,240,232,0.1);
+    border: 1px solid rgba(245,240,232,0.1);
+  }
+
+  .menu-item {
+    background: var(--dark);
+    padding: 2.5rem 2rem;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .menu-item:hover { background: #242117; }
+
+  .menu-item-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .menu-item-photo {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    margin: -2.5rem -2rem 1.5rem -2rem;
+    width: calc(100% + 4rem);
+    filter: brightness(0.88) saturate(1.1);
+    transition: filter 0.4s ease, transform 0.4s ease;
+  }
+
+  .menu-item:hover .menu-item-photo {
+    filter: brightness(0.95) saturate(1.2);
+    transform: scale(1.02);
+  }
+
+  .menu-item { overflow: hidden; }
+
+  .menu-item-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .menu-item-desc {
+    font-size: 0.82rem;
+    color: rgba(245,240,232,0.4);
+    line-height: 1.7;
+  }
+
+  .menu-item-tag {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    border: 1px solid rgba(232,160,122,0.3);
+    padding: 0.25rem 0.6rem;
+    border-radius: 1px;
+  }
+
+  /* REVIEWS */
+  .reviews-section { background: var(--cream); }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .review-card {
+    background: var(--warm-white);
+    padding: 2rem;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+
+  .review-stars {
+    color: var(--gold);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  .review-text {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    font-style: italic;
+  }
+
+  .review-author {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dark);
+    font-weight: 500;
+  }
+
+  .review-quote {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--accent);
+    opacity: 0.08;
+    line-height: 1;
+  }
+
+  .rating-highlight {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-top: 4rem;
+    padding: 2.5rem 3rem;
+    background: var(--dark);
+    border-radius: 2px;
+    flex-wrap: wrap;
+  }
+
+  .rating-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--cream);
+    line-height: 1;
+  }
+
+  .rating-info { flex: 1; }
+
+  .rating-stars-lg {
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .rating-count {
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.4);
+    letter-spacing: 0.06em;
+  }
+
+  .rating-platforms {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .platform-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.5);
+  }
+
+  .platform-bar {
+    width: 80px;
+    height: 3px;
+    background: rgba(245,240,232,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .platform-bar-fill {
+    height: 100%;
+    background: var(--gold);
+    border-radius: 2px;
+  }
+
+  /* INFO */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .info-block { margin-bottom: 2.5rem; }
+
+  .info-block-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--dark);
+    margin-bottom: 1rem;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+  }
+
+  .info-row-day { color: var(--muted); }
+
+  .info-row-time { color: var(--dark); font-weight: 400; }
+
+  .info-row-closed { color: rgba(196,80,42,0.6); font-style: italic; }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .contact-icon {
+    width: 36px; height: 36px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    color: var(--accent);
+  }
+
+  .contact-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-value {
+    font-size: 0.92rem;
+    color: var(--dark);
+    text-decoration: none;
+  }
+
+  .contact-value:hover { color: var(--accent); }
+
+  .services-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+
+  .service-pill {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dark);
+    border: 1px solid var(--border);
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    background: var(--cream);
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--accent);
+    text-align: center;
+    padding: 6rem 2rem;
+  }
+
+  .cta-section .section-title {
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .cta-section .section-title em { color: rgba(255,255,255,0.6); }
+
+  .cta-sub {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 2.5rem;
+  }
+
+  .cta-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-light {
+    background: #fff;
+    color: var(--accent);
+  }
+  .btn-light:hover { background: var(--cream); }
+
+  .btn-outline-light {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.4);
+  }
+  .btn-outline-light:hover { background: rgba(255,255,255,0.1); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--cream);
+    margin-bottom: 1rem;
+    display: block;
+    text-decoration: none;
+  }
+
+  .footer-sub {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.3);
+    margin-bottom: 2rem;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.35);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent-light); }
+
+  .footer-copy {
+    font-size: 0.72rem;
+    color: rgba(245,240,232,0.2);
+  }
+
+  /* Map placeholder */
+  .map-area {
+    width: 100%;
+    height: 260px;
+    background: linear-gradient(135deg, #1a1814, #211f18);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(245,240,232,0.3);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid rgba(245,240,232,0.06);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .map-area::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 50% 50%, rgba(196,80,42,0.1) 0%, transparent 60%);
+  }
+
+  .map-pin {
+    position: absolute;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(196,80,42,0.2);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(196,80,42,0.2); }
+    50% { box-shadow: 0 0 0 10px rgba(196,80,42,0.05); }
+  }
+
+  .map-label {
+    position: relative;
+    z-index: 1;
+    margin-top: 2rem;
+  }
+
+  /* Divider */
+  .ornament {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .ornament-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .ornament-symbol {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--accent);
+    opacity: 0.5;
+  }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+    z-index: 201;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--dark);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform-origin: center;
+  }
+
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(250,248,244,0.98);
+    backdrop-filter: blur(16px);
+    z-index: 200;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .mobile-menu.open {
+    display: flex;
+    opacity: 1;
+  }
+
+  .mobile-menu a {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--dark);
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+    text-align: center;
+  }
+
+  .mobile-menu a:hover { color: var(--accent); }
+
+  .mobile-menu .mobile-cta {
+    margin-top: 1.5rem;
+    background: var(--accent);
+    color: #fff !important;
+    padding: 0.85rem 2.5rem;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* WhatsApp Reserva Button */
+  .boto-principal {
+    background-color: #25D366 !important; /* Verd WhatsApp */
+    color: white !important;
+    padding: 15px 30px !important;
+    border: none !important;
+    border-radius: 50px !important;
+    font-size: 1.2rem !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+    transition: transform 0.2s !important;
+  }
+  .boto-principal:hover { transform: scale(1.05) !important; }
+
+  /* Modal Reserva */
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .modal-content h3 {
+    margin-bottom: 10px;
+    color: var(--dark);
+  }
+
+  .modal-content p {
+    margin-bottom: 20px;
+    color: var(--muted);
+  }
+
+  .camp { 
+    margin-bottom: 15px; 
+    display: flex; 
+    flex-direction: column; 
+  }
+  .camp label { 
+    margin-bottom: 5px; 
+    font-weight: bold; 
+    color: var(--dark);
+  }
+  .camp input { 
+    padding: 10px; 
+    border: 1px solid var(--border); 
+    border-radius: 5px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .botons-grup { 
+    display: flex; 
+    gap: 10px; 
+    margin-top: 20px; 
+  }
+  .boto-confirmar { 
+    background: #25D366; 
+    color: white; 
+    border: none; 
+    padding: 10px; 
+    flex: 2; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-weight: bold;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .boto-secundari { 
+    background: var(--cream); 
+    border: 1px solid var(--border); 
+    padding: 10px; 
+    flex: 1; 
+    border-radius: 5px; 
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .about-grid, .info-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .menu-grid { grid-template-columns: 1fr 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .rating-highlight { gap: 1.5rem; }
+    .about-tag { position: static; margin-top: 1rem; display: inline-block; }
+  }
+
+  @media (max-width: 480px) {
+    section { padding: 4rem 0; }
+    .menu-grid { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="images/logo.png" alt="El Vidari" class="nav-logo-img">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">El Restaurant</a></li>
+    <li><a href="#menu">La Carta</a></li>
+    <li><a href="#opinons">Opinions</a></li>
+    <li><a href="#info">Informació</a></li>
+<button class="btn-reserva nav-cta boto-principal">Reservar</button>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" class="mobile-link">El Restaurant</a>
+  <a href="#menu" class="mobile-link">La Carta</a>
+  <a href="#opinons" class="mobile-link">Opinions</a>
+  <a href="#info" class="mobile-link">Informació</a>
+<button class="btn-reserva mobile-cta boto-principal">📞 Reservar</button>
+
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-texture"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Restaurant i Cafeteria · Mollerussa, Lleida</p>
+    <img src="images/logo.png" alt="El Vidari - Restaurant i Cafeteria Mollerussa" class="hero-logo" style="max-width: 80%; height: 200px; scale: calc(1.8); margin-bottom: 1rem;">
+    <p class="hero-sub">Cuina casolana · Mediterràniament</p>
+    <div class="hero-badges">
+      <span class="badge"><span class="badge-dot"></span> Terrassa interior</span>
+      <span class="hero-rating">★★★★★ <span>4.6</span></span>
+      <span class="badge"><span class="badge-dot"></span> +3.600 ressenyes</span>
+    </div>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+<button class="btn-reserva boto-principal btn">Reservar Taula</button>
+      <a href="#menu" class="btn" style="background:transparent;color:rgba(250,248,244,0.7);border:1px solid rgba(250,248,244,0.2);border-radius:2px;">Veure la carta</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Descobreix</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label">El nostre restaurant</p>
+        <h2 class="section-title">Cuina casolana<br>amb <em>ànima pròpia</em></h2>
+        <p>El Vidari és molt més que un restaurant. És un lloc on la cuina casolana es converteix en experiència, on cada plat porta el pes de l'ofici i la cura dels detalls.</p>
+        <p>Situat al cor de Mollerussa, al Carrer d'Arbeca 14, el nostre local acull cada dia comensals que busquen qualitat sense pretensions: bon menjar, servei proper i un ambient que convida a quedar-se.</p>
+        <p>La nostra terrassa interior és perfecta per a dinars llargs, sopars íntims o celebracions en família. Tenim opcions vegetarianes i veganes, i un menú diari que cuida el teu butxaca sense renunciar a la qualitat.</p>
+        <div class="ornament">
+          <div class="ornament-line"></div>
+          <span class="ornament-symbol">✦</span>
+          <div class="ornament-line"></div>
+        </div>
+        <div class="about-stats">
+          <div class="stat-box">
+            <div class="stat-num">4.7</div>
+            <div class="stat-label">★ Google Maps</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">9.0</div>
+            <div class="stat-label">Tripadvisor</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">+3.6K</div>
+            <div class="stat-label">Ressenyes totals</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">98%</div>
+            <div class="stat-label">Recomanen</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-img-frame">
+          <div class="food-art">
+            <div style="text-align:center;padding:2rem;">
+              <div style="font-size:5rem;margin-bottom:1rem;">🍽️</div>
+              <p style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--muted);font-style:italic;">"Les bravas de la casa,<br>un 10 indiscutible"</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-tag">
+          <strong>2013</strong>
+          Obertura
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="container">
+    <p class="section-label">La nostra proposta</p>
+    <h2 class="section-title">Els plats<br><em>imprescindibles</em></h2>
+    <p class="menu-intro">Una carta que canvia amb les estacions, sempre fidel als productes frescos i l'elaboració casolana. Alguns clàssics no marxen mai.</p>
+
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img class="menu-item-photo" src="https://images.unsplash.com/photo-1565599837634-134bc3aadce8?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bravas de la Casa" loading="lazy">
+        <div class="menu-item-name">Braves de la Casa</div>
+        <div class="menu-item-desc">Patata cuinada a foc lent, amb la nostra salsa rosa casolana de 12 ingredients amb AOVE de Borges Blanques. Ració generosa i inoblidable.</div>
+        <span class="menu-item-tag">Clàssic imprescindible</span>
+      </div>
+      <div class="menu-item">
+        <img class="menu-item-photo" src="https://images.unsplash.com/photo-1548943487-a2e4e43b4853?w=600&q=80" alt="Croquetes de Pollastre Rostit" loading="lazy">
+        <div class="menu-item-name">Croquetes de Pollastre Rostit</div>
+        <div class="menu-item-desc">Elaborades diàriament amb el pollastre de l'olla, bechamel casolana i un cruixent perfecte. Cremen per dins, cruixen per fora.</div>
+        <span class="menu-item-tag">Tot casolà</span>
+      </div>
+      <div class="menu-item">
+        <img class="menu-item-photo" src="https://images.unsplash.com/photo-1567171466295-4afa63d45416?w=600&q=80" alt="Pastís de Formatge" loading="lazy">
+        <div class="menu-item-name">Pastís de Formatge</div>
+        <div class="menu-item-desc">El nostre pastís de formatge, cremós i lleuger, és dels millors de la comarca. El final perfecte de qualsevol àpat.</div>
+        <span class="menu-item-tag">El millor de la zona</span>
+      </div>
+      <div class="menu-item">
+        <img class="menu-item-photo" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80" alt="Costella de Porc" loading="lazy">
+        <div class="menu-item-name">Costella de Porc</div>
+        <div class="menu-item-desc">Cuita lentament fins aconseguir una tendresa excepcional. Jugosa i al punt exacte, una de les elaboracions estrella de la nostra cuina.</div>
+        <span class="menu-item-tag">Especialitat de cuina</span>
+      </div>
+      <div class="menu-item">
+        <img class="menu-item-photo" src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=600&q=80" alt="Poulpe i Orzo" loading="lazy">
+        <div class="menu-item-name">Poulpe i Orzo</div>
+        <div class="menu-item-desc">Poulpe a la brasa sobre llit d'orzo melós. Un plat que combina la cuina de mar amb les tècniques de sempre, actualitzat amb gust.</div>
+        <span class="menu-item-tag">Mar i muntanya</span>
+      </div>
+      <div class="menu-item">
+        <img class="menu-item-photo" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80" alt="Hamburguesa Ibèrica" loading="lazy">
+        <div class="menu-item-name">Hamburguesa Ibèrica</div>
+        <div class="menu-item-desc">100% porc ibèric, pa artesà i acompanyaments casolans. La hamburguesa que has de provar si vols saber el que és el bon gust.</div>
+        <span class="menu-item-tag">Ibèric de qualitat</span>
+      </div>
+      <div class="menu-item">
+        <img class="menu-item-photo" src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=600&q=80" alt="Pasta Cruixent d'Espinacs" loading="lazy">
+        <div class="menu-item-name">Pasta Cruixent d'Espinacs</div>
+        <div class="menu-item-desc">Una proposta vegetariana que sorprèn: massa lleugerament fregida amb espinacs frescos i ingredients de temporada. Textura única.</div>
+        <span class="menu-item-tag">Opció vegetariana</span>
+      </div>
+      <div class="menu-item">
+        <img class="menu-item-photo" src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&q=80" alt="Brownie Tot Casolà" loading="lazy">
+        <div class="menu-item-name">Brownie Tot Casolà</div>
+        <div class="menu-item-desc">El nostre brownie, dens i fonedís, preparat cada dia. Servit tebi amb gelat de vainilla o nata. El final dolç que necessites.</div>
+        <span class="menu-item-tag">Postre del dia</span>
+      </div>
+      <div class="menu-item">
+        <img class="menu-item-photo" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80" alt="La Cafeteria" loading="lazy">
+        <div class="menu-item-name">La Cafeteria</div>
+        <div class="menu-item-desc">Des del matí t'esperem amb esmorzars, torrades i els millors cafès de Mollerussa. Obre a les 8:30 cada dia laborable.</div>
+        <span class="menu-item-tag">Des de les 8:30h</span>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:2rem;font-size:0.8rem;color:rgba(245,240,232,0.3);letter-spacing:0.1em;">Carta completa disponible al restaurant · Preus i disponibilitat subjectes a canvis de temporada</p>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="opinons">
+  <div class="container">
+    <p class="section-label">El que diuen de nosaltres</p>
+    <h2 class="section-title">Paraules de<br><em>clients satisfets</em></h2>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Experiència excel·lent. El local és gran, ampli, i disposa d'una terrassa interior preciosa. El menú diari té un preu molt raonable i la qualitat és excepcional."</p>
+        <div class="review-author">Rubén Añé · Google</div>
+        <div class="review-quote">"</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Les bravas, sense dubte, de les millors de la zona. La salsa és 100% casolana. La ració és molt generosa per 4,50€ i no escatimen en salsa. Un 10!"</p>
+        <div class="review-author">HERR · Sluurpy</div>
+        <div class="review-quote">"</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Autèntica cuina catalana. L'atenció ha estat espectacular. Es nota que és un restaurant familiar i el servei és amb molt de compte, igual que els plats."</p>
+        <div class="review-author">Helena Lahora · Google</div>
+        <div class="review-quote">"</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"La costella de porc estava riquíssima i el pastís de formatge, sens dubte, dels millors que he provat mai. El menú diari té un preu molt raonable."</p>
+        <div class="review-author">Maria Antoanela · Tripadvisor</div>
+        <div class="review-quote">"</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Visc a Lleida, però si he d'anar a Mollerussa sempre vaig al Vidari, perquè és garantia de bona cuina, ben feta i servida amb cortesia i amabilitat."</p>
+        <div class="review-author">Client habitual · GastroRanking</div>
+        <div class="review-quote">"</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Un restaurant bonic, amb un personal agradable i una cuina excel·lent. A la part del darrere tenen una terrassa preciosa i molt acollidora. Altament recomanat."</p>
+        <div class="review-author">Tamara Roure · Google</div>
+        <div class="review-quote">"</div>
+      </div>
+    </div>
+
+    <div class="rating-highlight">
+      <div class="rating-num">4.6</div>
+      <div class="rating-info">
+        <div class="rating-stars-lg">★★★★★</div>
+        <div class="rating-count">Valoració mitjana · Més de 3.600 opinions</div>
+      </div>
+      <div class="rating-platforms">
+        <div class="platform-row">
+          <span style="min-width:90px">Google Maps</span>
+          <div class="platform-bar"><div class="platform-bar-fill" style="width:94%"></div></div>
+          <span>4.7</span>
+        </div>
+        <div class="platform-row">
+          <span style="min-width:90px">Tripadvisor</span>
+          <div class="platform-bar"><div class="platform-bar-fill" style="width:90%"></div></div>
+          <span>9.0</span>
+        </div>
+        <div class="platform-row">
+          <span style="min-width:90px">Restaurant Guru</span>
+          <div class="platform-bar"><div class="platform-bar-fill" style="width:92%"></div></div>
+          <span>4.6</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section id="info">
+  <div class="container">
+    <div class="info-grid">
+      <div>
+        <p class="section-label">Com trobar-nos</p>
+        <h2 class="section-title">Visita'ns<br>a <em>Mollerussa</em></h2>
+
+        <div class="info-block">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Adreça</div>
+              <a href="https://maps.google.com/?q=El+Vidari+Mollerussa" target="_blank" class="contact-value">Carrer d'Arbeca, 14<br>25230 Mollerussa, Lleida</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-label">Telèfon</div>
+              <a href="tel:+34973302213" class="contact-value">973 30 22 13</a><br>
+              <a href="tel:+34640264792" class="contact-value">640 264 792</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📱</div>
+            <div>
+              <div class="contact-label">Instagram</div>
+              <a href="https://www.instagram.com/el_vidari/" target="_blank" class="contact-value">@el_vidari</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="services-row">
+          <span class="service-pill">🌳 Terrassa</span>
+          <span class="service-pill">🥡 Per emportar</span>
+          <span class="service-pill">♿ Accessible</span>
+          <span class="service-pill">🍷 Vins i còctels</span>
+          <span class="service-pill">📅 Reserves</span>
+          <span class="service-pill">🌿 Vegetarià</span>
+          <span class="service-pill">🌱 Vegà</span>
+          <span class="service-pill">👥 Grups</span>
+        </div>
+
+<div class="map-container" style="margin-top: 2rem; border-radius: 2px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d372.78728184547646!2d0.8937996!3d41.6276842!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a6eb2129f9c351%3A0xda81512f3ae97079!2sEl%20Vidari!5e0!3m2!1sca!2ses!4v1773962163652!5m2!1sca!2ses" 
+    width="100%" 
+    height="400" 
+    style="border:0; display: block;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+      </div>
+
+      <div>
+        <p class="section-label">Quan obrim</p>
+        <h2 class="section-title">Horaris<br>d'<em>obertura</em></h2>
+
+        <div class="info-block" style="margin-top:2rem;">
+          <div class="info-row">
+            <span class="info-row-day">Dilluns</span>
+            <span class="info-row-closed">Tancat</span>
+          </div>
+          <div class="info-row">
+            <span class="info-row-day">Dimarts</span>
+            <span class="info-row-time">08:30 — 16:00</span>
+          </div>
+          <div class="info-row">
+            <span class="info-row-day">Dimecres</span>
+            <span class="info-row-time">08:30 — 16:00</span>
+          </div>
+          <div class="info-row">
+            <span class="info-row-day">Dijous</span>
+            <span class="info-row-time">08:30 — 16:00</span>
+          </div>
+          <div class="info-row">
+            <span class="info-row-day">Divendres</span>
+            <span class="info-row-time">08:30 — 16:00</span>
+          </div>
+          <div class="info-row">
+            <span class="info-row-day">Dissabte</span>
+            <span class="info-row-time">08:30 — 16:30</span>
+          </div>
+          <div class="info-row">
+            <span class="info-row-day">Diumenge</span>
+            <span class="info-row-closed">Tancat</span>
+          </div>
+        </div>
+
+        <div style="margin-top:2rem;padding:1.5rem;background:var(--cream);border-radius:2px;border-left:3px solid var(--accent);">
+          <p style="font-size:0.85rem;color:var(--muted);line-height:1.7;">
+            <strong style="color:var(--dark);font-weight:500;">Recomanem reservar</strong> els caps de setmana, especialment a l'hora de dinar. Contacteu-nos per telèfon o a través d'Instagram per assegurar la vostra taula.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <p style="font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:1rem;">Vine a tastar-ho</p>
+    <h2 class="section-title">Reserva la teva<br><em>taula avui</em></h2>
+    <p class="cta-sub">El Vidari t'espera. Truqueu i us guardarem el millor racó.</p>
+    <div class="cta-btns">
+<button class="btn-reserva boto-principal btn btn-light">Reservar Taula</button>
+      <a href="https://www.instagram.com/el_vidari/" target="_blank" class="btn btn-outline-light">Instagram @el_vidari</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#top" class="footer-logo">El Vidari</a>
+  <p class="footer-sub">Restaurant i Cafeteria · Mollerussa, Lleida</p>
+  <ul class="footer-links">
+    <li><a href="#about">El Restaurant</a></li>
+    <li><a href="#menu">La Carta</a></li>
+    <li><a href="#opinons">Opinions</a></li>
+    <li><a href="#info">Horaris i Contacte</a></li>
+    <li><a href="https://www.instagram.com/el_vidari/" target="_blank">Instagram</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 El Vidari · Carrer d'Arbeca 14, 25230 Mollerussa · 973 30 22 13</p>
+</footer>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+
+// Close mobile menu when clicking links or buttons
+  mobileMenu.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Smooth reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.menu-item, .review-card, .stat-box, .info-block').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 60) {
+      nav.style.padding = '0.8rem 3rem';
+    } else {
+      nav.style.padding = '1.2rem 3rem';
+    }
+  });
+  /* WhatsApp Reserva - Fixed timing issue */
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('modalReserva');
+    const btnTancar = document.getElementById('tancarModal');
+    const form = document.getElementById('formDades');
+
+    // Obrir el popup quan es clica qualsevol boto reserva
+    document.querySelectorAll('.btn-reserva').forEach(btn => {
+      btn.onclick = () => {
+        modal.style.display = 'flex';
+      };
+    });
+
+    // Tancar el popup
+    btnTancar.onclick = () => modal.style.display = 'none';
+
+    // Tancar modal clicant fora
+    modal.onclick = (e) => {
+      if (e.target === modal) modal.style.display = 'none';
+    };
+
+    // Enviar dades al WhatsApp
+    form.onsubmit = (e) => {
+      e.preventDefault();
+      
+      const numPersones = document.getElementById('persones').value;
+      const diaReserva = document.getElementById('dia').value;
+      const horaReserva = document.getElementById('hora').value;
+      const telefon = "34640264792";
+
+      const missatge = `Hola! M'agradaria fer una reserva per al dia *${diaReserva}* a les *${horaReserva}* per a *${numPersones}* persones. Em confirmeu disponibilitat?`;
+      
+      const url = `https://wa.me/${telefon}?text=${encodeURIComponent(missatge)}`;
+      
+      window.open(url, '_blank');
+      modal.style.display = 'none';
+      form.reset();
+    };
+  });
+
+</script>
+
+<div id="modalReserva" class="modal-overlay">
+  <div class="modal-content">
+    <h3>Reserva la teva taula</h3>
+    <p>Omple les dades i t'enviarem al WhatsApp del restaurant per confirmar.</p>
+    
+    <form id="formDades">
+      <div class="camp">
+        <label>Quants sereu?</label>
+        <input type="number" id="persones" placeholder="Ex: 4" required min="1">
+      </div>
+      
+      <div class="camp">
+        <label>Quin dia vindreu?</label>
+        <input type="date" id="dia" required>
+      </div>
+      
+      <div class="camp">
+        <label>A quina hora?</label>
+        <input type="time" id="hora" required>
+      </div>
+      
+      <div class="botons-grup">
+        <button type="button" id="tancarModal" class="boto-secundari">Cancel·lar</button>
+        <button type="submit" class="boto-confirmar">Enviar a WhatsApp</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+</body>
+
+</html>
